@@ -233,6 +233,50 @@
             </div>
     </footer>
 
+    <!-- Delivery Location Pincode Modal -->
+    <div class="modal-wrapper" id="location-modal" role="dialog" aria-modal="true" aria-label="Choose Your Location">
+        <div class="modal-backdrop"></div>
+        <div class="modal-box" style="max-width: 480px;">
+            <div class="modal-header">
+                <h3><i class="fa-solid fa-location-dot" style="color:var(--amazon-orange);"></i> Choose Your Location</h3>
+                <button class="btn-drawer-close modal-close-trigger" aria-label="Close">
+                    <i class="fa-solid fa-xmark" style="color:var(--text-primary);"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:16px;">
+                    Select a delivery location to see product availability and delivery options.
+                </p>
+                <form id="location-form">
+                    <div class="form-group">
+                        <label for="input-city">City</label>
+                        <input type="text" id="input-city" class="form-input" required value="New Delhi">
+                    </div>
+                    <div class="form-group">
+                        <label for="input-pincode">Enter 6-digit Pincode</label>
+                        <input type="text" id="input-pincode" class="form-input" pattern="[0-9]{6}" required value="110001">
+                    </div>
+
+                    <label style="font-size:0.85rem; font-weight:600; color:var(--text-primary);">Popular Metro Cities:</label>
+                    <div class="quick-chips">
+                        <button type="button" class="chip-btn" data-city="New Delhi" data-pin="110001">Delhi 110001</button>
+                        <button type="button" class="chip-btn" data-city="Mumbai" data-pin="400001">Mumbai 400001</button>
+                        <button type="button" class="chip-btn" data-city="Bengaluru" data-pin="560001">Bengaluru 560001</button>
+                        <button type="button" class="chip-btn" data-city="Hyderabad" data-pin="500001">Hyderabad 500001</button>
+                        <button type="button" class="chip-btn" data-city="Kolkata" data-pin="700001">Kolkata 700001</button>
+                    </div>
+
+                    <button type="submit" class="btn-checkout" style="margin-top:20px;">
+                        Apply Location
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
     <script src="script.js"></script>
 
 </body>

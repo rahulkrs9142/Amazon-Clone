@@ -530,3 +530,205 @@ ul a{
 .copyright{
     padding-top: 5px;
 }
+
+/* ==========================================================================
+   MODALS, FORM STYLES & TOAST NOTIFICATIONS
+   ========================================================================== */
+.modal-wrapper {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2050;
+  padding: 16px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease;
+}
+
+.modal-wrapper.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+}
+
+.modal-box {
+  position: relative;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  max-width: 600px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+  z-index: 10;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  animation: modalScale 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalScale {
+  0% { transform: scale(0.92); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.modal-header {
+  padding: 16px 24px;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.btn-drawer-close {
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 1.3rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-drawer-close:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.modal-body {
+  padding: 24px;
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-input:focus {
+  border-color: var(--amazon-orange);
+  box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.25);
+}
+
+.quick-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.chip-btn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all var(--transition-fast);
+}
+
+.chip-btn:hover {
+  background: #e2e7e6;
+  border-color: var(--amazon-orange);
+}
+
+.btn-checkout {
+  width: 100%;
+  background: var(--amazon-btn-buy);
+  color: #111;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 12px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 2px 5px rgba(213, 217, 217, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-checkout:hover {
+  background: var(--amazon-btn-buy-hover);
+}
+
+/* Toast Notifications */
+.toast-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 3000;
+  pointer-events: none;
+}
+
+.toast {
+  background: #1f2937;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  pointer-events: auto;
+  border-left: 4px solid var(--amazon-orange);
+  animation: slideToastIn 0.3s ease forwards;
+}
+
+@keyframes slideToastIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.toast.toast-remove {
+  animation: slideToastOut 0.3s ease forwards;
+}
+
+@keyframes slideToastOut {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(100%); opacity: 0; }
+}
