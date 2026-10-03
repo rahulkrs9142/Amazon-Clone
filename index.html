@@ -1,283 +1,837 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Amazon Clone - Online Shopping for Electronics, Apparel, Computers, Books, Home & more.">
-    <title>Amazon.in: Online Shopping - Electronics, Fashion, Home & More</title>
-    <!-- Google Fonts: Outfit & Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6.5.1 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Amazon Clone - Online Shopping for Electronics, Apparel, Computers, Books, Home & more.">
+  <meta name="theme-color" content="#131921">
+  <title>Amazon.in: Online Shopping - Electronics, Fashion, Home & More</title>
+
+  <!-- Google Fonts: Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6.5.1 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Top Announcement Banner -->
-    <aside class="top-announcement" aria-label="Special Offers Banner">
-        <span class="badge-sale">FESTIVAL SALE</span>
-        <span>Great Indian Festival is LIVE! Get up to <strong>70% OFF</strong> + Extra 10% Instant Bank Discount on all orders.</span>
-    </aside>
-   <header>
-        <nav class="navbar" aria-label="Main Navigation">
-            <a href="#" class="nav-logo nav-hover-box" aria-label="Amazon Home">
-                <div class="logo"></div>
-                <span class="in-domain">.in</span>
-            </a>
 
-            <div class="nav-address nav-hover-box" id="nav-address-btn" title="Change delivery location" role="button" tabindex="0">
-                <p class="add-first">Deliver to <span id="user-greeting-name">Rahul</span></p>
-                <div class="add-icon">
-                    <i class="fa-solid fa-location-dot"></i>
-                    <p class="add-second" id="user-location-text">New Delhi 110001</p>
-                </div>
-            </div>
+  <!-- =========================================================================
+       TOP ANNOUNCEMENT BAR
+       ========================================================================= -->
+  <aside class="top-announcement" aria-label="Special Offers Banner">
+    <span class="badge-sale">FESTIVAL SALE</span>
+    <span>Great Indian Festival is LIVE! Get up to <strong>70% OFF</strong> + Extra 10% Instant Bank Discount on all orders.</span>
+    <a href="#deals-section" style="color: var(--amazon-yellow); text-decoration: underline; font-weight: 600;">Shop Deals &rarr;</a>
+  </aside>
 
-            <div class="nav-search" role="search">
-                <select class="search-select" aria-label="Search Category">
-                    <option value="all">All</option>
-                    <option value="electronics">Electronics</option>
-                    <option value="fashion">Fashion</option>
-                    <option value="home">Home & Kitchen</option>
-                    <option value="beauty">Beauty & Health</option>
-                    <option value="toys">Toys & Games</option>
-                </select>
-                <div class="search-input-wrapper">
-                    <input type="text" placeholder="Search Amazon.in for products, brands and deals..." class="search-input" aria-label="Search Amazon">
-                    <button class="search-clear-btn" title="Clear search" aria-label="Clear Search Input">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-                <button class="search-icon-btn" title="Submit Search" aria-label="Search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
+  <!-- =========================================================================
+       HEADER & NAVIGATION BAR
+       ========================================================================= -->
+  <header>
+    <nav class="navbar" aria-label="Main Navigation">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="nav-logo nav-hover-box" aria-label="Amazon Home">
+        <div class="logo"></div>
+        <span class="in-domain">.in</span>
+      </a>
 
-            <div class="nav-lang nav-hover-box" title="Select Language">
-                <span class="flag">🇮🇳</span>
-                <span>EN</span>
-                <i class="fa-solid fa-caret-down"></i>
-            </div>
-
-            <div class="nav-signin nav-hover-box" id="nav-signin-btn" role="button" tabindex="0">
-                <p class="nav-first-line">Hello, <span id="user-display-name">Rahul</span></p>
-                <p class="nav-second-line">
-                    <span>Account & Lists</span>
-                    <i class="fa-solid fa-caret-down"></i>
-                </p>
-            </div>
-
-            <div class="nav-return nav-hover-box" id="nav-orders-btn" role="button" tabindex="0">
-                <p class="nav-first-line">Returns</p>
-                <p class="nav-second-line">& Orders</p>
-            </div>
-            
-            <div class="nav-cart nav-hover-box" id="nav-cart-btn" role="button" tabindex="0" aria-label="Shopping Cart">
-                <div class="cart-icon-wrapper">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span class="cart-count" id="cart-count-badge">0</span>
-                </div>
-                <span class="cart-text">Cart</span>
-            </div>
-        </nav>
-
-        <div class="panel">
-            <div class="panel-left">
-                <div class="panel-all nav-hover-box" id="side-menu-toggle" role="button" tabindex="0">
-                    <i class="fa-solid fa-bars"></i>
-                    <span>All</span>
-                </div>
-                <div class="panel-links">
-                    <span class="panel-link-item active">Today's Deals</span>
-                    <span class="panel-link-item">Electronics</span>
-                    <span class="panel-link-item">Fashion</span>
-                    <span class="panel-link-item">Home & Kitchen</span>
-                    <span class="panel-link-item">Beauty</span>
-                    <span class="panel-link-item">Customer Service</span>
-                    <span class="panel-link-item">Sell</span>
-                </div>
-            </div>
-            <div class="panel-right nav-hover-box">
-                <i class="fa-solid fa-bolt"></i>
-                <span>Great Deals in Electronics</span>
-            </div>
+      <!-- Delivery Location -->
+      <div class="nav-address nav-hover-box" id="nav-address-btn" title="Change delivery location" role="button" tabindex="0">
+        <p class="add-first">Deliver to <span id="user-greeting-name">Rahul</span></p>
+        <div class="add-icon">
+          <i class="fa-solid fa-location-dot"></i>
+          <p class="add-second" id="user-location-text">New Delhi 110001</p>
         </div>
-    </header> 
+      </div>
 
-    <div class="hero-section">
-        <div class="hero-msg">
-            <p>You are on amazon.com. You can also shop on Amazon India for millions of products with fast local delivery.<a>Click here to go to amazon.in</a></p>
+      <!-- Search Bar -->
+      <div class="nav-search" role="search">
+        <select class="search-select" aria-label="Search Category">
+          <option value="all">All</option>
+          <option value="electronics">Electronics</option>
+          <option value="fashion">Fashion</option>
+          <option value="home">Home & Kitchen</option>
+          <option value="beauty">Beauty & Health</option>
+          <option value="toys">Toys & Games</option>
+        </select>
+        
+        <div class="search-input-wrapper">
+          <input type="text" placeholder="Search Amazon.in for products, brands and deals..." class="search-input" aria-label="Search Amazon">
+          <button class="search-clear-btn" title="Clear search" aria-label="Clear Search Input">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
         </div>
+
+        <button class="search-icon-btn" title="Submit Search" aria-label="Search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+        <!-- Search Autocomplete Suggestions -->
+        <div class="search-suggestions" aria-live="polite"></div>
+      </div>
+
+      <!-- Language Selector -->
+      <div class="nav-lang nav-hover-box" title="Select Language">
+        <span class="flag">🇮🇳</span>
+        <span>EN</span>
+        <i class="fa-solid fa-caret-down"></i>
+      </div>
+
+      <!-- Sign In / Account Dropdown -->
+      <div class="nav-signin nav-hover-box" id="nav-signin-btn" role="button" tabindex="0">
+        <p class="nav-first-line">Hello, <span id="user-display-name">Rahul</span></p>
+        <p class="nav-second-line">
+          <span>Account & Lists</span>
+          <i class="fa-solid fa-caret-down"></i>
+        </p>
+
+        <!-- Hover Account Dropdown -->
+        <div class="account-dropdown">
+          <button class="account-dropdown-btn" onclick="openModal('signin-modal')">Switch Account / Sign In</button>
+          <div class="account-dropdown-links">
+            <div>
+              <h4>Your Lists</h4>
+              <a href="#">Create a Wish List</a>
+              <a href="#">Wish from Any Website</a>
+              <a href="#">Baby Wishlist</a>
+              <a href="#">Discover Your Style</a>
+            </div>
+            <div>
+              <h4>Your Account</h4>
+              <a href="#" onclick="openModal('orders-modal'); return false;">Your Orders</a>
+              <a href="#" onclick="openModal('location-modal'); return false;">Your Addresses</a>
+              <a href="#">Your Prime</a>
+              <a href="#">Content & Devices</a>
+              <a href="#">Customer Service</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Returns & Orders -->
+      <div class="nav-return nav-hover-box" id="nav-orders-btn" role="button" tabindex="0">
+        <p class="nav-first-line">Returns</p>
+        <p class="nav-second-line">& Orders</p>
+      </div>
+
+      <!-- Shopping Cart -->
+      <div class="nav-cart nav-hover-box" id="nav-cart-btn" role="button" tabindex="0" aria-label="Shopping Cart">
+        <div class="cart-icon-wrapper">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-count" id="cart-count-badge">0</span>
+        </div>
+        <span class="cart-text">Cart</span>
+      </div>
+
+      <!-- Dark/Light Theme Toggle -->
+      <button class="nav-theme-toggle" id="theme-toggle-btn" title="Toggle Theme" aria-label="Toggle Dark and Light Mode">
+        <i class="fa-solid fa-moon"></i>
+        <span>Dark</span>
+      </button>
+
+    </nav>
+
+    <!-- Sub-Navbar (Panel) -->
+    <div class="panel">
+      <div class="panel-left">
+        <div class="panel-all nav-hover-box" id="side-menu-toggle" role="button" tabindex="0">
+          <i class="fa-solid fa-bars"></i>
+          <span>All</span>
+        </div>
+        <div class="panel-links">
+          <span class="panel-link-item active" onclick="location.href='#deals-section'">Today's Deals</span>
+          <span class="panel-link-item" onclick="document.querySelector('.filter-tab[data-category=\'electronics\']').click(); location.href='#featured-catalog-section';">Electronics</span>
+          <span class="panel-link-item" onclick="document.querySelector('.filter-tab[data-category=\'fashion\']').click(); location.href='#featured-catalog-section';">Fashion</span>
+          <span class="panel-link-item" onclick="document.querySelector('.filter-tab[data-category=\'home\']').click(); location.href='#featured-catalog-section';">Home & Kitchen</span>
+          <span class="panel-link-item" onclick="document.querySelector('.filter-tab[data-category=\'beauty\']').click(); location.href='#featured-catalog-section';">Beauty</span>
+          <span class="panel-link-item" onclick="document.querySelector('.filter-tab[data-category=\'toys\']').click(); location.href='#featured-catalog-section';">Toys & Games</span>
+          <span class="panel-link-item" onclick="openModal('orders-modal')">Track Orders</span>
+          <span class="panel-link-item" onclick="openModal('location-modal')">Customer Service</span>
+        </div>
+      </div>
+      <div class="panel-right nav-hover-box" onclick="location.href='#deals-section'">
+        <i class="fa-solid fa-bolt"></i>
+        <span>Great Deals in Electronics</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       HERO SLIDER CAROUSEL SECTION
+       ========================================================================= -->
+  <section class="hero-slider-container" aria-label="Promotional Carousel">
+    <div class="hero-slider" id="hero-slider">
+      
+      <!-- Slide 1: Electronics Sale -->
+      <div class="hero-slide">
+        <img src="hero_banner2.jpg" alt="Big Amazon Electronics Sale" loading="eager">
+      </div>
+
+      <!-- Slide 2: Fashion Festival -->
+      <div class="hero-slide">
+        <img src="hero_banner3.jpg" alt="Great Indian Festival Amazon Fashion" loading="lazy">
+      </div>
+
+      <!-- Slide 3: Classic Storefront -->
+      <div class="hero-slide">
+        <img src="hero_image.jpg" alt="Amazon Online Shopping Essentials" loading="lazy">
+      </div>
+
     </div>
 
-    <div class="shop-section">
-        <div class="box">
-            <div class="box-content">
-                <h2>Clothes</h2>
-                <div class="box-img"style="background-image: url('box1_image.jpg');"></div>
-                <p>See more</p>
-            </div>
+    <!-- Gradient Blend into Product Section -->
+    <div class="hero-gradient-overlay"></div>
+
+    <!-- Carousel Controls -->
+    <button class="slider-btn slider-btn-prev" id="slider-prev-btn" aria-label="Previous Slide">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <button class="slider-btn slider-btn-next" id="slider-next-btn" aria-label="Next Slide">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+
+    <!-- Slide Indicators -->
+    <div class="slider-dots" id="slider-dots"></div>
+
+    <!-- Floating Welcome Message Banner -->
+    <div class="hero-msg-card" id="hero-msg-card">
+      <p>
+        <i class="fa-solid fa-gift"></i>
+        <span>
+          You are on <strong>Amazon.in</strong>. Enjoy fast delivery on millions of items with easy returns and 24/7 support.
+          <a href="#deals-section">Explore Today's Best Offers &rarr;</a>
+        </span>
+      </p>
+      <button class="hero-msg-close" onclick="document.getElementById('hero-msg-card').style.display='none'" title="Dismiss" aria-label="Dismiss banner">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       MAIN CONTENT CONTAINER
+       ========================================================================= -->
+  <main class="main-content">
+    
+    <!-- 8 Core Categories Showcase Grid -->
+    <section class="category-grid" aria-label="Top Shopping Categories">
+      
+      <!-- Box 1 -->
+      <article class="box" data-category="fashion">
+        <h3>Clothes & Daily Apparel</h3>
+        <div class="box-img-wrapper">
+          <img src="box1_image.jpg" alt="Clothes & Fashion" loading="lazy">
         </div>
-        <div class="box">
-            <div class="box-content">
-                <h2>Health & Personal Care</h2>
-                <div class="box-img"style="background-image: url('box2_image.jpg');"></div>
-                <p>See more</p>
-            </div>
+        <div class="box-meta">
+          <span class="box-link">See more</span>
+          <span class="box-badge">Up to 60% off</span>
         </div>
-        <div class="box">
-            <div class="box-content">
-                <h2>Furniture</h2>
-                <div class="box-img"style="background-image: url('box3_image.jpg');"></div>
-                <p>See more</p>
-            </div>
+      </article>
+
+      <!-- Box 2 -->
+      <article class="box" data-category="beauty">
+        <h3>Health & Personal Care</h3>
+        <div class="box-img-wrapper">
+          <img src="box2_image.jpg" alt="Health and Personal Care" loading="lazy">
         </div>
-        <div class="box">
-            <div class="box-content">
-                <h2>Electronics</h2>
-                <div class="box-img"style="background-image: url('box4_image.jpg');"></div>
-                <p>See more</p>
-            </div>
+        <div class="box-meta">
+          <span class="box-link">See more</span>
+          <span class="box-badge">Min 40% off</span>
         </div>
-        <div class="box">
-            <div class="box-content">
-                <h2>Beauty picks</h2>
-                <div class="box-img"style="background-image: url('box5_image.jpg');"></div>
-                <p>See more</p>
-            </div>
+      </article>
+
+      <!-- Box 3 -->
+      <article class="box" data-category="home">
+        <h3>Furniture & Home Decor</h3>
+        <div class="box-img-wrapper">
+          <img src="box3_image.jpg" alt="Furniture & Home Decor" loading="lazy">
         </div>
-        <div class="box">
-            <div class="box-content">
-                <h2>Pet Care</h2>
-                <div class="box-img"style="background-image: url('box6_image.jpg');"></div>
-                <p>See more</p>
-            </div>
+        <div class="box-meta">
+          <span class="box-link">See more</span>
+          <span class="box-badge">Best Sellers</span>
         </div>
-        <div class="box">
-            <div class="box-content">
-                <h2>New Arrival in Toys</h2>
-                <div class="box-img"style="background-image: url('box7_image.jpg');"></div>
-                <p>See more</p>
-            </div>
+      </article>
+
+      <!-- Box 4 -->
+      <article class="box" data-category="electronics">
+        <h3>Electronics & Gadgets</h3>
+        <div class="box-img-wrapper">
+          <img src="box4_image.jpg" alt="Electronics & Gadgets" loading="lazy">
         </div>
-        <div class="box">
-            <div class="box-content">
-                <h2>Discover Fashion Trends</h2>
-                <div class="box-img"style="background-image: url('box8_image.jpg');"></div>
-                <p>See more</p>
-            </div>
+        <div class="box-meta">
+          <span class="box-link">See more</span>
+          <span class="box-badge">Top Brands</span>
         </div>
+      </article>
+
+      <!-- Box 5 -->
+      <article class="box" data-category="beauty">
+        <h3>Beauty Picks & Skincare</h3>
+        <div class="box-img-wrapper">
+          <img src="box5_image.jpg" alt="Beauty Picks & Skincare" loading="lazy">
+        </div>
+        <div class="box-meta">
+          <span class="box-link">See more</span>
+          <span class="box-badge">Trending</span>
+        </div>
+      </article>
+
+      <!-- Box 6 -->
+      <article class="box" data-category="home">
+        <h3>Pet Care & Supplies</h3>
+        <div class="box-img-wrapper">
+          <img src="box6_image.jpg" alt="Pet Care & Supplies" loading="lazy">
+        </div>
+        <div class="box-meta">
+          <span class="box-link">See more</span>
+          <span class="box-badge">Amazon Choice</span>
+        </div>
+      </article>
+
+      <!-- Box 7 -->
+      <article class="box" data-category="toys">
+        <h3>New Arrivals in Toys</h3>
+        <div class="box-img-wrapper">
+          <img src="box7_image.jpg" alt="Toys & Games" loading="lazy">
+        </div>
+        <div class="box-meta">
+          <span class="box-link">See more</span>
+          <span class="box-badge">Under ₹999</span>
+        </div>
+      </article>
+
+      <!-- Box 8 -->
+      <article class="box" data-category="fashion">
+        <h3>Discover Fashion Trends</h3>
+        <div class="box-img-wrapper">
+          <img src="box8_image.jpg" alt="Fashion Trends" loading="lazy">
+        </div>
+        <div class="box-meta">
+          <span class="box-link">See more</span>
+          <span class="box-badge">New Styles</span>
+        </div>
+      </article>
+
+    </section>
+
+    <!-- =======================================================================
+         TODAY'S LIGHTNING DEALS SECTION
+         ======================================================================= -->
+    <section class="deals-container" id="deals-section" aria-label="Today's Lightning Deals">
+      <div class="deals-header-row">
+        <div>
+          <h2 class="section-title">
+            <i class="fa-solid fa-fire"></i>
+            Today's Lightning Deals
+          </h2>
+          <span class="section-subtitle">Grab limited time deals with instant extra savings</span>
+        </div>
+        <div class="timer-box">
+          <i class="fa-regular fa-clock"></i>
+          <span>Ends in: <strong id="deal-countdown">04h : 28m : 45s</strong></span>
+        </div>
+      </div>
+
+      <!-- Lightning Deals Grid (Rendered by JS) -->
+      <div class="deals-grid" id="lightning-deals-grid"></div>
+    </section>
+
+    <!-- =======================================================================
+         FEATURED PRODUCT CATALOG WITH FILTER TABS
+         ======================================================================= -->
+    <section class="catalog-section" id="featured-catalog-section" aria-label="Featured Product Catalog">
+      <div class="section-header">
+        <h2 class="section-title">
+          <i class="fa-solid fa-layer-group"></i>
+          Featured Products & Best Sellers
+        </h2>
+        <span class="section-subtitle">Curated picks across popular departments</span>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="catalog-filter-bar">
+        <button class="filter-tab active" data-category="all">All Products</button>
+        <button class="filter-tab" data-category="electronics">Electronics & Audio</button>
+        <button class="filter-tab" data-category="fashion">Fashion & Footwear</button>
+        <button class="filter-tab" data-category="home">Home & Living</button>
+        <button class="filter-tab" data-category="beauty">Beauty & Health</button>
+        <button class="filter-tab" data-category="toys">Toys & Games</button>
+      </div>
+
+      <!-- Catalog Cards Grid (Rendered by JS) -->
+      <div class="products-grid" id="products-catalog-grid"></div>
+    </section>
+
+    <!-- =======================================================================
+         BENEFITS / TRUST SECTION
+         ======================================================================= -->
+    <section class="benefits-grid" aria-label="Shopping Benefits">
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <i class="fa-solid fa-truck-fast"></i>
+        </div>
+        <div class="benefit-text">
+          <h4>Free & Fast Delivery</h4>
+          <p>Unlimited one-day delivery with Prime membership</p>
+        </div>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <div class="benefit-text">
+          <h4>100% Secure Checkout</h4>
+          <p>Encrypted UPI, Cards, NetBanking & Pay on Delivery</p>
+        </div>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <i class="fa-solid fa-rotate-left"></i>
+        </div>
+        <div class="benefit-text">
+          <h4>Easy 7 Days Returns</h4>
+          <p>Hassle-free doorstep returns and instant refunds</p>
+        </div>
+      </div>
+
+      <div class="benefit-card">
+        <div class="benefit-icon">
+          <i class="fa-solid fa-headset"></i>
+        </div>
+        <div class="benefit-text">
+          <h4>24x7 Customer Support</h4>
+          <p>Round the clock assistance via live chat and phone</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       DRAWER OVERLAY BACKDROP
+       ========================================================================= -->
+  <div class="drawer-overlay" id="drawer-overlay"></div>
+
+  <!-- =========================================================================
+       SLIDE-OUT SHOPPING CART DRAWER
+       ========================================================================= -->
+  <aside class="cart-drawer" id="cart-drawer" aria-label="Shopping Cart Drawer">
+    <div class="cart-drawer-header">
+      <h3>
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span>Shopping Cart</span>
+        <span id="cart-header-count" style="font-size:0.9rem; font-weight:500;">(0 items)</span>
+      </h3>
+      <button class="btn-drawer-close" id="cart-drawer-close" aria-label="Close Cart">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
     </div>
 
-    <footer>
-        <div class="foot-panel1">
-            Back to top
-        </div>
-
-            <div class="foot-panel2">
-                <ul>
-                    <p><b>Get to Know Us</b></p>
-                    <a>Careers</a>
-                    <a>Blog</a>
-                    <a>About Amazon</a>
-                    <a>Investor Relations</a>
-                    <a>Amazon Devices</a>
-                    <a>Amazon Science</a>
-                </ul>
-                <ul>
-                    <p><b>Make Money with Us</b></p>
-                    <a>Sell products on Amazon</a>
-                    <a>Sell on Amazon Business</a>
-                    <a>Sell apps on Amazon</a>
-                    <a>Become an Affiliate</a>
-                    <a>Advertise Your Products</a>
-                    <a>Self-Publish with Us</a>
-                    <a>Host an Amazon Hub</a>
-                </ul>
-                <ul>
-                    <p><b>Amazon Payment Products</b></p>
-                    <a>Amazon Rewards Visa Signature Cards</a>
-                    <a>Amazon.com Store Card</a>
-                    <a>Amazon Business Card</a>
-                    <a>Amazon Business Line of Credit</a>
-                    <a>Shop with Points</a>
-                    <a>Credit Card Marketplace</a>
-                </ul>
-                <ul>
-                    <p><b>Let Us Help You</b></p>
-                    <a>Amazon and COVID-19</a>
-                    <a>Your Account</a>
-                    <a>Your Orders</a>
-                    <a>Shipping Rates & Policies</a>
-                    <a>Returns & Replacements</a>
-                    <a>Manage Your Content and Devices</a>
-                    <a>Amazon Assistant</a>
-                    <a>Help</a>
-                </ul>
-            </div>
-
-            <div class="foot-panel3">
-                <div class="logo"></div>
-            </div>
-
-            <div class="foot-panel4">
-                <div class="pages">
-                    <a>Conditions of Use</a>
-                    <a>Privacy Notice</a>
-                    <a>Interest-Based Ads</a>
-                </div>
-                <div class="copyright">
-                    © 1996-2026, Amazon.com, Inc. or its affiliates
-                </div>
-            </div>
-    </footer>
-
-    <!-- Delivery Location Pincode Modal -->
-    <div class="modal-wrapper" id="location-modal" role="dialog" aria-modal="true" aria-label="Choose Your Location">
-        <div class="modal-backdrop"></div>
-        <div class="modal-box" style="max-width: 480px;">
-            <div class="modal-header">
-                <h3><i class="fa-solid fa-location-dot" style="color:var(--amazon-orange);"></i> Choose Your Location</h3>
-                <button class="btn-drawer-close modal-close-trigger" aria-label="Close">
-                    <i class="fa-solid fa-xmark" style="color:var(--text-primary);"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:16px;">
-                    Select a delivery location to see product availability and delivery options.
-                </p>
-                <form id="location-form">
-                    <div class="form-group">
-                        <label for="input-city">City</label>
-                        <input type="text" id="input-city" class="form-input" required value="New Delhi">
-                    </div>
-                    <div class="form-group">
-                        <label for="input-pincode">Enter 6-digit Pincode</label>
-                        <input type="text" id="input-pincode" class="form-input" pattern="[0-9]{6}" required value="110001">
-                    </div>
-
-                    <label style="font-size:0.85rem; font-weight:600; color:var(--text-primary);">Popular Metro Cities:</label>
-                    <div class="quick-chips">
-                        <button type="button" class="chip-btn" data-city="New Delhi" data-pin="110001">Delhi 110001</button>
-                        <button type="button" class="chip-btn" data-city="Mumbai" data-pin="400001">Mumbai 400001</button>
-                        <button type="button" class="chip-btn" data-city="Bengaluru" data-pin="560001">Bengaluru 560001</button>
-                        <button type="button" class="chip-btn" data-city="Hyderabad" data-pin="500001">Hyderabad 500001</button>
-                        <button type="button" class="chip-btn" data-city="Kolkata" data-pin="700001">Kolkata 700001</button>
-                    </div>
-
-                    <button type="submit" class="btn-checkout" style="margin-top:20px;">
-                        Apply Location
-                    </button>
-                </form>
-            </div>
-        </div>
+    <!-- Free Shipping Indicator -->
+    <div class="free-shipping-progress">
+      <span id="free-shipping-msg">Add <strong>₹499</strong> more to qualify for <strong>FREE Delivery</strong>.</span>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="free-shipping-fill" style="width: 0%;"></div>
+      </div>
     </div>
 
-    <!-- Toast Notification Container -->
-    <div class="toast-container" id="toast-container" aria-live="polite"></div>
+    <!-- Cart Items List Container -->
+    <div class="cart-items-list" id="cart-items-container"></div>
 
-    <script src="script.js"></script>
+    <!-- Cart Footer & Checkout -->
+    <div class="cart-drawer-footer">
+      <div class="cart-subtotal-row">
+        <span>Delivery:</span>
+        <strong style="color:var(--amazon-green);">FREE</strong>
+      </div>
+      <div class="cart-subtotal-row">
+        <span>Subtotal:</span>
+        <strong id="cart-subtotal-val">₹0</strong>
+      </div>
+      <div class="cart-total-row">
+        <span>Total:</span>
+        <span id="cart-total-val" style="color:var(--amazon-red);">₹0</span>
+      </div>
+      <button class="btn-checkout" id="btn-checkout-drawer">
+        <i class="fa-solid fa-lock"></i>
+        <span>Proceed to Checkout</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- =========================================================================
+       SLIDE-OUT SIDE MENU DRAWER (Amazon 'All' Menu)
+       ========================================================================= -->
+  <nav class="side-menu-drawer" id="side-menu-drawer" aria-label="All Navigation Categories">
+    <div class="side-menu-header">
+      <i class="fa-solid fa-circle-user"></i>
+      <span id="side-user-greeting">Hello, Rahul</span>
+      <button class="btn-drawer-close" id="side-menu-close" style="margin-left: auto;" aria-label="Close Side Menu">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <div class="side-menu-content">
+      <div class="side-menu-group">
+        <h4 class="side-menu-title">Digital Content & Devices</h4>
+        <div class="side-menu-item">
+          <span>Amazon Prime Video</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <div class="side-menu-item">
+          <span>Amazon Prime Music</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <div class="side-menu-item">
+          <span>Kindle E-readers & eBooks</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      </div>
+
+      <div class="side-menu-group">
+        <h4 class="side-menu-title">Shop by Category</h4>
+        <div class="side-menu-item" onclick="document.querySelector('.filter-tab[data-category=\'electronics\']').click(); location.href='#featured-catalog-section'; document.getElementById('side-menu-close').click();">
+          <span>Electronics & Accessories</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <div class="side-menu-item" onclick="document.querySelector('.filter-tab[data-category=\'fashion\']').click(); location.href='#featured-catalog-section'; document.getElementById('side-menu-close').click();">
+          <span>Men & Women's Fashion</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <div class="side-menu-item" onclick="document.querySelector('.filter-tab[data-category=\'home\']').click(); location.href='#featured-catalog-section'; document.getElementById('side-menu-close').click();">
+          <span>Home, Kitchen & Pets</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <div class="side-menu-item" onclick="document.querySelector('.filter-tab[data-category=\'toys\']').click(); location.href='#featured-catalog-section'; document.getElementById('side-menu-close').click();">
+          <span>Toys, Baby & Video Games</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      </div>
+
+      <div class="side-menu-group">
+        <h4 class="side-menu-title">Programs & Features</h4>
+        <div class="side-menu-item" onclick="location.href='#deals-section'; document.getElementById('side-menu-close').click();">
+          <span>Today's Deals</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <div class="side-menu-item">
+          <span>Gift Cards & Mobile Recharges</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <div class="side-menu-item">
+          <span>Amazon Pay & Cashback</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      </div>
+
+      <div class="side-menu-group">
+        <h4 class="side-menu-title">Help & Settings</h4>
+        <div class="side-menu-item" onclick="openModal('location-modal'); document.getElementById('side-menu-close').click();">
+          <span>Delivery Settings & Addresses</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <div class="side-menu-item" onclick="openModal('orders-modal'); document.getElementById('side-menu-close').click();">
+          <span>Your Orders & Returns</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+        <div class="side-menu-item" onclick="openModal('signin-modal'); document.getElementById('side-menu-close').click();">
+          <span>Sign In / Switch Account</span>
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =========================================================================
+       MODALS
+       ========================================================================= -->
+
+  <!-- Quick View Product Modal -->
+  <div class="modal-wrapper" id="quick-view-modal" role="dialog" aria-modal="true" aria-label="Product Preview">
+    <div class="modal-backdrop"></div>
+    <div class="modal-box quick-view-box">
+      <div class="modal-header">
+        <h3>Product Details</h3>
+        <button class="btn-drawer-close modal-close-trigger" aria-label="Close">
+          <i class="fa-solid fa-xmark" style="color:var(--text-primary);"></i>
+        </button>
+      </div>
+      <div class="modal-body" id="quick-view-container"></div>
+    </div>
+  </div>
+
+  <!-- Interactive Checkout Modal -->
+  <div class="modal-wrapper" id="checkout-modal" role="dialog" aria-modal="true" aria-label="Checkout Process">
+    <div class="modal-backdrop"></div>
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-shield-halved" style="color:var(--amazon-green);"></i> Secure Checkout</h3>
+        <button class="btn-drawer-close modal-close-trigger" aria-label="Close">
+          <i class="fa-solid fa-xmark" style="color:var(--text-primary);"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="checkout-form">
+          <div id="checkout-order-summary"></div>
+
+          <h4 style="font-size:1rem; margin-bottom:12px; font-weight:700;">1. Delivery Address</h4>
+          <div class="form-group">
+            <label for="checkout-name">Full Name</label>
+            <input type="text" id="checkout-name" class="form-input" required value="Rahul Kumar">
+          </div>
+          <div class="form-group">
+            <label for="checkout-address">Street Address / House No.</label>
+            <input type="text" id="checkout-address" class="form-input" required value="Plot 42, Connaught Place, Block B">
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div class="form-group">
+              <label for="checkout-city">City</label>
+              <input type="text" id="checkout-city" class="form-input" required value="New Delhi">
+            </div>
+            <div class="form-group">
+              <label for="checkout-pin">Pincode</label>
+              <input type="text" id="checkout-pin" class="form-input" required value="110001">
+            </div>
+          </div>
+
+          <h4 style="font-size:1rem; margin:16px 0 12px; font-weight:700;">2. Select Payment Method</h4>
+          <div style="background:var(--bg-surface); border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:12px; margin-bottom:20px;">
+            <label style="display:flex; align-items:center; gap:10px; margin-bottom:8px; cursor:pointer;">
+              <input type="radio" name="payment-method" value="upi" checked>
+              <strong>Amazon Pay UPI / Any UPI App (Recommended)</strong>
+            </label>
+            <label style="display:flex; align-items:center; gap:10px; margin-bottom:8px; cursor:pointer;">
+              <input type="radio" name="payment-method" value="card">
+              <span>Credit or Debit Card (Visa, MasterCard, RuPay)</span>
+            </label>
+            <label style="display:flex; align-items:center; gap:10px; cursor:pointer;">
+              <input type="radio" name="payment-method" value="cod">
+              <span>Cash on Delivery / Pay on Delivery</span>
+            </label>
+          </div>
+
+          <button type="submit" class="btn-checkout">
+            <i class="fa-solid fa-lock"></i>
+            <span>Place Your Order & Pay</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Delivery Location Pincode Modal -->
+  <div class="modal-wrapper" id="location-modal" role="dialog" aria-modal="true" aria-label="Choose Your Location">
+    <div class="modal-backdrop"></div>
+    <div class="modal-box" style="max-width: 480px;">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-location-dot" style="color:var(--amazon-orange);"></i> Choose Your Location</h3>
+        <button class="btn-drawer-close modal-close-trigger" aria-label="Close">
+          <i class="fa-solid fa-xmark" style="color:var(--text-primary);"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:16px;">
+          Select a delivery location to see product availability and delivery options.
+        </p>
+        <form id="location-form">
+          <div class="form-group">
+            <label for="input-city">City</label>
+            <input type="text" id="input-city" class="form-input" required value="New Delhi">
+          </div>
+          <div class="form-group">
+            <label for="input-pincode">Enter 6-digit Pincode</label>
+            <input type="text" id="input-pincode" class="form-input" pattern="[0-9]{6}" required value="110001">
+          </div>
+
+          <label style="font-size:0.85rem; font-weight:600; color:var(--text-primary);">Popular Metro Cities:</label>
+          <div class="quick-chips">
+            <button type="button" class="chip-btn" data-city="New Delhi" data-pin="110001">Delhi 110001</button>
+            <button type="button" class="chip-btn" data-city="Mumbai" data-pin="400001">Mumbai 400001</button>
+            <button type="button" class="chip-btn" data-city="Bengaluru" data-pin="560001">Bengaluru 560001</button>
+            <button type="button" class="chip-btn" data-city="Hyderabad" data-pin="500001">Hyderabad 500001</button>
+            <button type="button" class="chip-btn" data-city="Kolkata" data-pin="700001">Kolkata 700001</button>
+          </div>
+
+          <button type="submit" class="btn-checkout" style="margin-top:20px;">
+            Apply Location
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sign In / Switch User Modal -->
+  <div class="modal-wrapper" id="signin-modal" role="dialog" aria-modal="true" aria-label="Sign In">
+    <div class="modal-backdrop"></div>
+    <div class="modal-box" style="max-width: 440px;">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-user-lock" style="color:var(--amazon-orange);"></i> Sign In to Amazon</h3>
+        <button class="btn-drawer-close modal-close-trigger" aria-label="Close">
+          <i class="fa-solid fa-xmark" style="color:var(--text-primary);"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="signin-form">
+          <div class="form-group">
+            <label for="input-username">Your Name</label>
+            <input type="text" id="input-username" class="form-input" required value="Rahul Kumar" placeholder="Enter your full name">
+          </div>
+          <div class="form-group">
+            <label for="input-email">Email or Mobile Phone Number</label>
+            <input type="text" id="input-email" class="form-input" required value="rahulkrs9142@amazon.clone" placeholder="Enter email or mobile">
+          </div>
+          <div class="form-group">
+            <label for="input-password">Password</label>
+            <input type="password" id="input-password" class="form-input" value="amazonclone123" placeholder="Enter password">
+          </div>
+          <button type="submit" class="btn-checkout" style="margin-top:16px;">
+            Continue
+          </button>
+          <p style="font-size:0.75rem; color:var(--text-muted); margin-top:14px; text-align:center;">
+            By continuing, you agree to Amazon's Conditions of Use and Privacy Notice.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Orders Tracking Modal -->
+  <div class="modal-wrapper" id="orders-modal" role="dialog" aria-modal="true" aria-label="Your Orders">
+    <div class="modal-backdrop"></div>
+    <div class="modal-box" style="max-width: 580px;">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-box" style="color:var(--amazon-orange);"></i> Your Recent Orders</h3>
+        <button class="btn-drawer-close modal-close-trigger" aria-label="Close">
+          <i class="fa-solid fa-xmark" style="color:var(--text-primary);"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div style="border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:16px; margin-bottom:14px; background:var(--bg-surface);">
+          <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:10px; border-bottom:1px solid var(--border-color); padding-bottom:6px;">
+            <span>Order #AMZ-84920194</span>
+            <strong style="color:var(--amazon-green);"><i class="fa-solid fa-circle-check"></i> Delivered Yesterday</strong>
+          </div>
+          <div style="display:flex; gap:12px; align-items:center;">
+            <img src="deal_earbuds.jpg" alt="Earbuds" style="width:60px; height:60px; object-fit:contain; border-radius:4px; background:#fff; padding:4px;">
+            <div>
+              <h5 style="font-size:0.9rem; font-weight:600;">SoundFlow Pro ANC True Wireless Earbuds</h5>
+              <p style="font-size:0.82rem; color:var(--text-secondary);">Delivered to Rahul Kumar, New Delhi</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:16px; background:var(--bg-surface);">
+          <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:10px; border-bottom:1px solid var(--border-color); padding-bottom:6px;">
+            <span>Order #AMZ-65239103</span>
+            <strong style="color:var(--amazon-orange);"><i class="fa-solid fa-truck"></i> Out for Delivery Today</strong>
+          </div>
+          <div style="display:flex; gap:12px; align-items:center;">
+            <img src="deal_smartwatch.jpg" alt="Smartwatch" style="width:60px; height:60px; object-fit:contain; border-radius:4px; background:#fff; padding:4px;">
+            <div>
+              <h5 style="font-size:0.9rem; font-weight:600;">NovaTrack AMOLED Calling Smartwatch</h5>
+              <p style="font-size:0.82rem; color:var(--text-secondary);">Arriving by 7:00 PM</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer>
+    <!-- Back to top -->
+    <div class="foot-panel1" id="back-to-top-btn" role="button" tabindex="0">
+      <i class="fa-solid fa-arrow-up" style="margin-right: 8px;"></i> Back to top
+    </div>
+
+    <!-- 4 Column Navigation -->
+    <div class="foot-panel2-wrapper">
+      <div class="foot-panel2">
+        <div class="foot-col">
+          <p>Get to Know Us</p>
+          <a href="#">About Amazon</a>
+          <a href="#">Careers</a>
+          <a href="#">Press Releases</a>
+          <a href="#">Amazon Science</a>
+          <a href="#">Our Climate Pledge</a>
+        </div>
+
+        <div class="foot-col">
+          <p>Connect with Us</p>
+          <a href="#">Facebook</a>
+          <a href="#">Twitter / X</a>
+          <a href="#">Instagram</a>
+        </div>
+
+        <div class="foot-col">
+          <p>Make Money with Us</p>
+          <a href="#">Sell on Amazon</a>
+          <a href="#">Sell under Amazon Accelerator</a>
+          <a href="#">Protect and Build Your Brand</a>
+          <a href="#">Amazon Global Selling</a>
+          <a href="#">Become an Affiliate</a>
+          <a href="#">Fulfilment by Amazon</a>
+          <a href="#">Advertise Your Products</a>
+        </div>
+
+        <div class="foot-col">
+          <p>Let Us Help You</p>
+          <a href="#" onclick="openModal('orders-modal'); return false;">Your Account</a>
+          <a href="#" onclick="openModal('orders-modal'); return false;">Returns Centre</a>
+          <a href="#">100% Purchase Protection</a>
+          <a href="#">Amazon App Download</a>
+          <a href="#">Help & Customer Support</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Logo & Language strip -->
+    <div class="foot-panel3">
+      <div class="logo"></div>
+      <div class="foot-selectors">
+        <button class="foot-btn" onclick="showToast('Selected Language: English');">
+          <i class="fa-solid fa-globe"></i> English
+        </button>
+        <button class="foot-btn" onclick="showToast('Currency: INR (₹)');">
+          ₹ INR - Indian Rupee
+        </button>
+        <button class="foot-btn" onclick="openModal('location-modal');">
+          🇮🇳 India
+        </button>
+      </div>
+    </div>
+
+    <!-- Legal & Copyright -->
+    <div class="foot-panel4">
+      <div class="pages">
+        <a href="#">Conditions of Use & Sale</a>
+        <a href="#">Privacy Notice</a>
+        <a href="#">Interest-Based Ads</a>
+      </div>
+      <div class="copyright">
+        © 1996-2026, Amazon.com, Inc. or its affiliates. Built with pride for portfolio demonstration.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Interactive JavaScript -->
+  <script src="script.js"></script>
 
 </body>
 </html>

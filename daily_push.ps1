@@ -2,7 +2,7 @@
 # Amazon Clone - 15-Day Daily GitHub Push Script
 # Usage:
 #   .\daily_push.ps1           (Pushes the next scheduled day)
-#   .\daily_push.ps1 -Day 3    (Pushes a specific day)
+#   .\daily_push.ps1 -Day 4    (Pushes a specific day)
 # ==============================================================================
 
 param (
@@ -15,16 +15,16 @@ if ($Day -eq 0) {
     if (Test-Path $stateFile) {
         $Day = [int](Get-Content $stateFile)
     } else {
-        $Day = 2 # Day 1 is done today
+        $Day = 2 # Day 1 is done
     }
 }
 
 if ($Day -gt 15) {
-    Write-Host "🎉 All 15 days of Amazon Clone have already been pushed to GitHub!" -ForegroundColor Green
+    Write-Host "[DONE] All 15 days of Amazon Clone have already been pushed to GitHub!" -ForegroundColor Green
     exit 0
 }
 
-Write-Host "🚀 Preparing Day $Day update for GitHub..." -ForegroundColor Cyan
+Write-Host "[INFO] Preparing Day $Day update for GitHub..." -ForegroundColor Cyan
 
 # 15-Day Commit Map
 $commitMessages = @{
@@ -49,7 +49,6 @@ git pull origin main
 
 if ($Day -ge 2 -and $Day -le 14) {
     # Check out incrementally from feature/full-upgrade
-    # Merge or cherry-pick corresponding changes
     git checkout feature/full-upgrade -- index.html style.css script.js
     
     # Copy images as required for deals/banners
@@ -61,19 +60,21 @@ if ($Day -ge 2 -and $Day -le 14) {
     git checkout feature/full-upgrade -- .
 }
 
+# Advance .current_day counter before committing so it tracks properly
+$nextDay = $Day + 1
+Set-Content -Path $stateFile -Value $nextDay
+
 # Stage and commit
 git add .
 $msg = $commitMessages[$Day]
-if (-not $msg) { $msg = "Day $Day: Progressive updates to Amazon Clone" }
+if (-not $msg) { $msg = "Day ${Day}: Progressive updates to Amazon Clone" }
 
-git commit -m $msg
+git commit -m "$msg"
 git push origin main
 
 if ($LASTEXITCODE -eq 0) {
-    Write-Host "✅ Day $Day successfully committed and pushed to GitHub!" -ForegroundColor Green
-    $nextDay = $Day + 1
-    Set-Content -Path $stateFile -Value $nextDay
-    Write-Host "📅 Next scheduled run: Day $nextDay" -ForegroundColor Yellow
+    Write-Host "[SUCCESS] Day $Day successfully committed and pushed to GitHub!" -ForegroundColor Green
+    Write-Host "[NEXT] Next scheduled run: Day $nextDay" -ForegroundColor Yellow
 } else {
-    Write-Host "❌ Git push failed. Please check network connection or credentials." -ForegroundColor Red
+    Write-Host "[ERROR] Git push failed. Please check network connection or credentials." -ForegroundColor Red
 }
